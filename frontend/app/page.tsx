@@ -46,7 +46,7 @@ export default async function Home() {
                 </td>
                 <td> 
                   <Link href={`/view/${pest.id}`}
-                    className="bg-blue-100 hover:bg-blue-500 cursor-pointer hover:text-blue-500 hover:underline">
+                    className="p-2 cursor-pointer hover:bg-blue-400 hover:text-white hover:rounded hover:underline">
                     View
                   </Link>
                 </td>
