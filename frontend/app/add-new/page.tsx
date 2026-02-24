@@ -49,7 +49,7 @@ export default function addNew() {
     });
 
     if (response.ok) {
-      alert("Submission successful! It is now 'Pending' for review.");
+      alert("Submission successful! It is now Pending for review.");
       router.push('/'); 
     } else {
       alert("Error: Make sure the Category ID exists in your database.");
@@ -133,7 +133,7 @@ export default function addNew() {
         </div>
           
         <button type="submit" className="block mx-auto bg-green-700 text-white font-bold rounded p-2 hover:bg-green-800 transition cursor-pointer mt-4">
-          Submit Addition for Review
+          Submit Entry for Review
         </button>
       </form>
       

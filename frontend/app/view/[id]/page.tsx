@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Navbar  from "../../../components/Navbar"
+import DeleteRequestForm from '../../../components/DeleteRequestForm';
 
 // Fetch data on every request
 export const dynamic = 'force-dynamic';
@@ -64,7 +65,7 @@ export default async function PestDetailPage({ params }: { params: Promise<{ id:
           
           <div>
               <table>
-                   <thead>
+                  <thead>
                       <tr>
                         <th className="p-4">What to look for</th >
                         <th className="p-4">How to prevent</th >
@@ -81,26 +82,11 @@ export default async function PestDetailPage({ params }: { params: Promise<{ id:
                   </tbody>
                 </table>
             </div>
-
       </div>
-
-       <div className="p-8 bg-white border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-4">
-            <span className="text-xs text-slate-400">Created: {new Date(pest.created_at).toLocaleDateString()}</span>
-            
-            <div className="flex gap-3">
-              <Link 
-                href={`/view/${id}/edit`}
-                className="px-6 py-2 bg-slate-800 text-white rounded-lg font-medium hover:bg-slate-700 transition-colors cursor-pointer"
-              >
-                Request Edit
-              </Link>
-              <button 
-                className="px-6 py-2 border border-red-200 text-red-600 rounded-lg font-medium hover:bg-red-50 transition-colors cursor-pointer"
-              >
-                Request Delete
-              </button>
-            </div>
-          </div>
+      <div>
+        <span className="text-xs text-slate-400">Created: {new Date(pest.created_at).toLocaleDateString()}</span>
+        <DeleteRequestForm pestId={pest.id} />
+      </div>    
     </main>
       </>
   );
