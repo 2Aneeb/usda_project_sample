@@ -14,6 +14,7 @@ function Navbar(){
             href="/add-new" className="cursor-pointer bg-blue-100 hover:text-white hover:bg-blue-400 hover:underline border p-2 rounded ml-5">
              Add New
             </Link>
+
         </div>
     )
 }

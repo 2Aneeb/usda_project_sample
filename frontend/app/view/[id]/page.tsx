@@ -1,3 +1,4 @@
+'use-client'
 import React from 'react';
 import Link from 'next/link';
 import Navbar  from "../../../components/Navbar"
@@ -39,9 +40,8 @@ export default async function PestDetailPage({ params }: { params: Promise<{ id:
                 <h3 className="text-xl text-gray-600">{pest.category_display}</h3>
                 <span
                   className={`px-2 py-1 rounded text-sm ${
-                    pest.status === "ACTIVE"
-                      ? "bg-green-100 text-green-800"
-                      : "bg-yellow-100 text-yellow-800"
+                    pest.status === 'ACTIVE'? 'bg-green-100 text-green-800': 
+                    pest.status === 'REMOVAL REQUESTED' ? 'bg-red-100 text-red-800': 'bg-yellow-100 text-yellow-800'
                   }`}
                 >
                   {pest.status}

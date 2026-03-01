@@ -4,7 +4,7 @@ import {useRouter} from 'next/navigation'
 import Navbar  from "../../components/Navbar"
 
 
-export default function addNew() {
+export default function AddNew() {
   const router = useRouter();
 
 
