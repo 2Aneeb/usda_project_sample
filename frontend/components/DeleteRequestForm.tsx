@@ -10,7 +10,7 @@ export default function DeleteRequestForm({ pestId }: { pestId: string }) {
     if (!reason) return alert("Please provide a reason.");
 
     const response = await fetch(`http://127.0.0.1:8000/api/pests/${pestId}/`, {
-      method: 'PATCH', // PATCH updates only specific fields
+      method: 'PATCH', 
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         status: 'REMOVAL_REQUESTED',

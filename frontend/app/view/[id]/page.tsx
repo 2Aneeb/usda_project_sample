@@ -1,15 +1,14 @@
-'use-client'
 import React from 'react';
 import Link from 'next/link';
 import Navbar  from "../../../components/Navbar"
 import DeleteRequestForm from '../../../components/DeleteRequestForm';
 
-// Fetch data on every request
+
 export const dynamic = 'force-dynamic';
 
 async function getPestDetail(id: string) {
   const res = await fetch(`http://127.0.0.1:8000/api/pests/${id}/`, {
-    cache: 'no-store', // Ensures we get the latest data
+    cache: 'no-store', 
   });
   if (!res.ok) return null;
   return res.json();
@@ -84,7 +83,7 @@ export default async function PestDetailPage({ params }: { params: Promise<{ id:
             </div>
       </div>
       <div>
-        <span className="text-xs text-slate-400">Created: {new Date(pest.created_at).toLocaleDateString()}</span>
+        <span className="text-s text-slate-400">Created: {new Date(pest.created_at).toLocaleDateString()}</span>
         <DeleteRequestForm pestId={pest.id} />
       </div>    
     </main>

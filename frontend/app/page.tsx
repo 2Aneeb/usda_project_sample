@@ -37,8 +37,7 @@ export default function Home() {
   };
 
   const filteredPests = pests.filter((pest: any) => {
-    // This looks at the pest status and checks if that key is 'true' in our filters state
-    return filters[pest.status as keyof typeof filters];
+      return filters[pest.status as keyof typeof filters];
   });
  
   return (

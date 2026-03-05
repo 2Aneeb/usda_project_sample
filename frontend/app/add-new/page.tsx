@@ -6,15 +6,11 @@ import Navbar  from "../../components/Navbar"
 
 export default function AddNew() {
   const router = useRouter();
-
-
-  // Track the "Main" selection to show/hide sub-menus
   const [mainType, setMainType] = useState("");
 
-// The actual data we will send to Django
   const [formData, setFormData] = useState({
     common_name: '',
-    category: '', // This will store the ID (e.g., 3 for Insects)
+    category: '', 
     description: '',
     what_to_look_for: '',
     how_to_prevent: '',
@@ -27,17 +23,6 @@ export default function AddNew() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  /*
-      const handleChange = (event) => {
-        const {name, value} = event.target;
-        setPost( (prevPost) => {
-            return {
-                ...prevPost,
-                [name]:value,
-            }
-        })
-       
-    } */
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
