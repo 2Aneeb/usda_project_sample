@@ -9,6 +9,7 @@ export const dynamic = 'force-dynamic';
 
 export default function Home() {
   const [pests, setPests] = useState([]);
+  const [searchBox, setSearchBox] = useState('')
 
   const [filters, setFilters] = useState ({
      ACTIVE: true,
@@ -27,18 +28,24 @@ export default function Home() {
         .catch(err => console.error("Fetch error:", err));
     }, []);
    
-    // Check box filters
-    type FilterStatus = 'ACTIVE' | 'PENDING' | 'REMOVAL_REQUESTED';
-    const handleCheckboxChange = (statusKey: FilterStatus) => {
-    setFilters(prev => ({
-      ...prev,
-      [statusKey]: !prev[statusKey]
-    }));
+  // Check box filters and seearch
+  type FilterStatus = 'ACTIVE' | 'PENDING' | 'REMOVAL_REQUESTED';
+  const handleCheckboxChange = (statusKey: FilterStatus) => {
+  setFilters(prev => ({
+    ...prev,
+    [statusKey]: !prev[statusKey]
+  }));
   };
 
   const filteredPests = pests.filter((pest: any) => {
-      return filters[pest.status as keyof typeof filters];
-  });
+  const matchesStatus = filters[pest.status as keyof typeof filters];
+
+  const matchesSearch = pest.common_name
+    .toLowerCase()
+    .includes(searchBox.toLowerCase());
+
+    return matchesStatus && matchesSearch;
+});
  
   return (
     <main className="p-10 bg-gray-50 min-h-screen text-black">
@@ -46,7 +53,8 @@ export default function Home() {
       <h1 className="text-3xl font-bold mb-6">USDA APHIS - Plant Pests & Diseases </h1>
 
       <div className='flex items-center  justify-end gap-6 mb-4'>    
-          <label className="flex items-center space-x-3 cursor-pointer">
+          <input type="text" placeholder='Search Name' value={searchBox} onChange={(e) => setSearchBox(e.target.value)} className='border border-grey rounded'/>
+          <label className="flex items-center space-x-3 cursor-pointer"> 
           <input type="checkbox" 
           checked={filters.ACTIVE}
           onChange={() => handleCheckboxChange('ACTIVE')}
